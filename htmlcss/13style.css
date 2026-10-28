@@ -1,0 +1,208 @@
+/* 전체: 패딩과 테두리를 width 안에 포함해서 계산 */
+* {
+  box-sizing: border-box;
+}
+
+/* 글자 크기는 rem(브라우저 글자 크기 설정을 따름), 글자색과 줄 간격은 body에서 상속 */
+body {
+  font-family: sans-serif;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 머리말 */
+.hero {
+  background-color: #1d2b3a;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.slogan {
+  color: #cfd8e3;
+  font-size: 1.1rem;
+}
+
+main {
+  padding: 1.5rem;
+}
+
+.week h2,
+.info h2 {
+  font-size: 1.5rem;
+  color: #1d2b3a;
+  border-bottom: 2px solid #1d2b3a;
+  padding-bottom: 0.5rem;
+}
+
+.notice {
+  color: #b8431e;
+  font-weight: bold;
+}
+
+/* 링크: 마우스를 올리면 색이 바뀐다 (버튼도 a 태그이므로 아래 버튼 규칙에서 색을 다시 지정한다) */
+a {
+  color: #1d4ed8;
+}
+
+a:hover {
+  color: #c2410c;
+}
+
+/* 카드: 안쪽 간격과 글자는 em이라서 .card의 font-size만 바꾸면 전체가 함께 커진다 */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.75em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.25em;
+  margin: 1rem 0;
+  width: 90%;
+}
+
+.card h3 {
+  font-size: 1.25em;
+}
+
+.meta {
+  color: #6b6b6b;
+  font-size: 0.875em;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 변형 카드: .card보다 아래에 써야 덮어써진다 */
+.featured {
+  font-size: 1.15rem;
+  border: 2px solid #c2410c;
+}
+
+.soon {
+  border-style: dashed;
+  border-color: #999;
+}
+
+.end {
+  opacity: 0.6;
+}
+
+/* 배지: h3(1.25em) 안에서 0.6em이면 본문 글자의 약 0.75배가 된다 (em은 부모 기준으로 곱해진다) */
+.badge {
+  background-color: #1e6b3a;
+  color: #fff;
+  font-size: 0.6em;
+  font-weight: bold;
+  padding: 0.2em 0.7em;
+  border-radius: 1em;
+}
+
+.badge.hot {
+  background-color: #c2410c;
+}
+
+.badge.upcoming {
+  background-color: #1d4ed8;
+}
+
+.badge.closed {
+  background-color: #595959;
+}
+
+/* 버튼 기본형: a:hover(0,1,1)보다 강해야 하므로 .btn:hover(0,2,0)에서 색을 다시 지정한다 */
+.btn {
+  background-color: #1d2b3a;
+  color: #fff;
+  border: 2px solid #1d2b3a;
+  padding: 0.4em 1em;
+  border-radius: 0.4em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn.primary {
+  background-color: #c2410c;
+  border-color: #c2410c;
+}
+
+.btn.outline {
+  background-color: transparent;
+  color: #1d2b3a;
+}
+
+/* 상태: 변형 규칙보다 아래에 써서 같은 우선순위에서 이기게 한다 */
+.btn:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background-color: #9a3412;
+  border-color: #9a3412;
+}
+
+.btn:focus {
+  background-color: #fff3b0;
+  border-color: #1d2b3a;
+  color: #1d2b3a;
+}
+
+.btn:active {
+  opacity: 0.7;
+}
+
+/* 비활성: 마우스를 올려도 변하지 않도록 상태 규칙보다 아래에 쓴다 */
+.btn.disabled {
+  background-color: #ddd;
+  border-color: #ddd;
+  color: #595959;
+}
+
+/* 맥락별 크기: 머리말 안의 버튼만 크게 */
+header .btn {
+  font-size: 1.2rem;
+  padding: 0.6em 1.4em;
+}
+
+/* .actions는 카드에서는 오른쪽, 머리말에서는 가운데 */
+.actions {
+  text-align: right;
+}
+
+header .actions {
+  text-align: center;
+}
+
+/* 관람 안내 */
+.info li {
+  border-bottom: 1px dashed #ccc;
+  padding: 0.5rem 0;
+}
+
+.info li:last-child {
+  border-bottom: none;
+}
+
+.tip {
+  background-color: #fff7ed;
+  color: #7c2d12;
+  border: 1px solid #fdba74;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+footer {
+  background-color: #1d2b3a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
