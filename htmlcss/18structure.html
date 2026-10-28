@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연필한자루 - 구조 보기</title>
+  <style>
+    /* 기본 규칙 */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Malgun Gothic", sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: #fffdf5;
+    }
+
+    /* 머리말 */
+    header {
+      padding: 40px 20px;
+      background: #2d5a4b;
+      color: #fff;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; }
+
+    /* 메뉴: sticky */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 2px solid #2d5a4b;
+      text-align: center;
+    }
+    nav a {
+      display: inline-block;
+      padding: 14px 20px;
+      color: #2d5a4b;
+      text-decoration: none;
+    }
+
+    /* 본문 */
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+    h2 { margin: 0 0 24px; }
+
+    /* 상품 카드 */
+    .product {
+      position: relative;
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 2px solid #2d5a4b;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .product h3 { margin: 0 0 8px; }
+    .desc { margin: 0 0 8px; }
+    .price {
+      margin: 0 0 16px;
+      font-weight: bold;
+      color: #c0392b;
+    }
+
+    /* 배지: absolute */
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #c0392b;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    /* 버튼 */
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 8px;
+      background: #2d5a4b;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* 배송 안내 */
+    .notice {
+      height: 120px;
+      padding: 16px;
+      border: 1px solid #ccc;
+      background: #fff;
+      overflow: auto;
+    }
+    .notice p { margin: 0 0 8px; }
+
+    /* 꼬리말 */
+    footer {
+      padding: 24px;
+      background: #333;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* TOP 버튼: fixed */
+    .top-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 100;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: #c0392b;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  
+    /* ===== 화면 구조 보기: 박스 경계와 이름표 ===== */
+    header, nav, .wrap, .product, .badge, .btn, .notice, footer, .top-btn {
+      outline: 2px dashed #e67e22;
+      outline-offset: -2px;
+    }
+    header::before, nav::before, .wrap::before, .product::before, .notice::before, footer::before {
+      display: block;
+      padding: 2px 6px;
+      background: #fff3e0;
+      color: #b35900;
+      font: 12px/1.4 monospace;
+      text-align: left;
+    }
+    header::before { content: "header"; }
+    nav::before    { content: "nav | position: sticky; top: 0; z-index: 10"; }
+    .wrap::before  { content: "main.wrap | max-width: 480px; margin: 0 auto"; }
+    .product::before { content: "article.product | position: relative (배지의 기준점)"; margin: -20px -20px 12px; }
+    .notice::before  { content: "div.notice | height: 120px; overflow: auto"; margin: -16px -16px 8px; }
+    footer::before { content: "footer"; }
+    .badge::after   { content: " ← absolute"; font-size: 11px; }
+    .top-btn::after { content: " ← fixed"; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <h1>연필한자루</h1>
+    <p>손글씨가 즐거워지는 동네 문구점</p>
+  </header>
+
+  <nav>
+    <a href="#products">상품 보기</a>
+    <a href="#notice">배송 안내</a>
+  </nav>
+
+  <main class="wrap">
+    <h2 id="products">이번 주 상품</h2>
+
+    <article class="product">
+      <span class="badge">NEW</span>
+      <h3>연필 12자루 세트</h3>
+      <p class="desc">부드럽게 써지는 HB 연필</p>
+      <p class="price">6,000원</p>
+      <a class="btn" href="#">장바구니 담기</a>
+    </article>
+
+    <article class="product">
+      <span class="badge">BEST</span>
+      <h3>모눈 노트</h3>
+      <p class="desc">줄 간격이 반듯한 A5 노트</p>
+      <p class="price">4,500원</p>
+      <a class="btn" href="#">장바구니 담기</a>
+    </article>
+
+    <article class="product">
+      <h3>지우개 3개입</h3>
+      <p class="desc">깔끔하게 지워지는 지우개</p>
+      <p class="price">2,500원</p>
+      <a class="btn" href="#">장바구니 담기</a>
+    </article>
+
+    <h2 id="notice">배송 안내</h2>
+    <div class="notice">
+      <p>3만 원 이상 구매하면 배송비가 무료입니다.</p>
+      <p>평일 오후 2시 이전에 주문하면 당일 출고됩니다.</p>
+      <p>주말과 공휴일에 들어온 주문은 다음 영업일에 출고됩니다.</p>
+      <p>제주와 도서 산간 지역은 배송비가 3,000원 추가됩니다.</p>
+      <p>포장이 뜯기지 않은 상품은 7일 이내에 교환할 수 있습니다.</p>
+      <p>단순 변심으로 인한 반품은 왕복 배송비를 부담해야 합니다.</p>
+      <p>문의는 카카오톡 채널로 남겨 주세요.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 연필한자루 | 서울시 연필구 한자루길 3</p>
+  </footer>
+
+  <a class="top-btn" href="#top">TOP</a>
+</body>
+</html>

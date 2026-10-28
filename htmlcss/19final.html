@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>달토끼 팝업스토어</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; color: #2b2d5b; line-height: 1.6; background: #f4f1ff; font-family: sans-serif; }
+header { background: #2b2d5b; color: #fff; text-align: center; padding: 48px 20px 64px; }
+header h1 { margin: 0 0 8px; }
+header p { margin: 0 0 16px; }
+.date { display: inline-block; padding: 4px 16px; border: 2px solid #ffd86b; border-radius: 20px; color: #ffd86b; font-weight: bold; }
+nav { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 2px solid #2b2d5b; text-align: center; }
+nav a { display: inline-block; padding: 14px 24px; color: #2b2d5b; text-decoration: none; font-weight: bold; }
+.wrap { max-width: 480px; margin: 0 auto; padding: 0 20px 40px; }
+.intro { margin-top: -36px; margin-bottom: 30px; padding: 20px; background: #fff; border: 2px solid #2b2d5b; border-radius: 16px; position: relative; z-index: 1; }
+.intro p { margin: 0 0 12px; }
+.tag { display: inline-block; margin: 0 6px 6px 0; padding: 2px 12px; background: #e6e0ff; border-radius: 20px; font-size: 14px; }
+h2 { margin: 30px 0 16px; }
+.goods { position: relative; margin-bottom: 30px; padding: 16px; background: #fff; border: 2px solid #2b2d5b; border-radius: 16px; }
+.thumb { height: 120px; margin-bottom: 12px; background: #e6e0ff; border-radius: 12px; text-align: center; font-size: 56px; line-height: 120px; }
+.goods h3 { margin: 0 0 4px; }
+.goods .price { margin: 0 0 12px; color: #d6336c; font-weight: bold; }
+.badge { position: absolute; top: -12px; right: 12px; padding: 2px 14px; background: #d6336c; color: #fff; border-radius: 20px; font-size: 14px; font-weight: bold; }
+.btn { display: inline-block; padding: 10px 24px; background: #2b2d5b; color: #fff; border-radius: 8px; text-decoration: none; }
+.soldout { opacity: 0.55; }
+.soldout .btn { background: #999; }
+.ribbon { position: absolute; top: 0; left: 0; padding: 4px 14px; background: #333; color: #fff; border-radius: 14px 0 12px 0; font-size: 14px; font-weight: bold; }
+.info { max-height: 140px; padding: 16px; overflow: auto; background: #fff; border: 2px solid #2b2d5b; border-radius: 12px; }
+.info p { margin: 0 0 8px; }
+footer { padding: 24px; background: #2b2d5b; color: #fff; text-align: center; font-size: 14px; }
+.cart { position: fixed; right: 20px; bottom: 20px; z-index: 100; width: 56px; height: 56px; padding: 0; background: #ffd86b; border-radius: 50%; text-align: center; font-size: 26px; line-height: 52px; text-decoration: none; border: 2px solid #2b2d5b; }
+.count { position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; background: #d6336c; color: #fff; border-radius: 50%; font-size: 13px; font-weight: bold; line-height: 24px; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#goods">굿즈 보기</a>
+  <a href="#info">운영 안내</a>
+</nav>
+<header id="top">
+  <h1>달토끼 팝업스토어</h1>
+  <p>한 달 동안만 열리는 굿즈 가게</p>
+  <span class="date">11.1 ~ 11.30</span>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <p>달토끼와 함께하는 가을 한 달! 현장에서만 만날 수 있는 굿즈를 모았어요.</p>
+    <span class="tag">한정 수량</span><span class="tag">현장 결제</span><span class="tag">포토존</span>
+  </section>
+
+  <h2 id="goods">이번 달 굿즈</h2>
+  <article class="goods">
+    <span class="badge">HOT</span>
+    <div class="thumb">🐰</div>
+    <h3>달토끼 인형</h3>
+    <p class="price">18,000원</p>
+    <a class="btn" href="#">담기</a>
+  </article>
+  <article class="goods">
+    <span class="badge">NEW</span>
+    <div class="thumb">☕</div>
+    <h3>달빛 머그컵</h3>
+    <p class="price">12,000원</p>
+    <a class="btn" href="#">담기</a>
+  </article>
+  <article class="goods">
+    <div class="thumb">🔑</div>
+    <h3>토끼 키링</h3>
+    <p class="price">6,500원</p>
+    <a class="btn" href="#">담기</a>
+  </article>
+  <article class="goods soldout">
+    <span class="ribbon">SOLD OUT</span>
+    <div class="thumb">🖼️</div>
+    <h3>포스터 세트</h3>
+    <p class="price">9,000원</p>
+    <a class="btn" href="#">품절</a>
+  </article>
+
+  <h2 id="info">운영 안내</h2>
+  <div class="info">
+    <p>운영 시간은 매일 오전 11시부터 저녁 8시까지입니다.</p>
+    <p>입장은 마감 30분 전까지 가능합니다.</p>
+    <p>굿즈는 1인당 상품별 2개까지 구매할 수 있습니다.</p>
+    <p>결제는 현장에서만 가능하며 카드와 간편결제를 지원합니다.</p>
+    <p>포토존 촬영은 10분씩 이용해 주세요.</p>
+    <p>품절된 상품은 재입고 일정이 없습니다.</p>
+    <p>문의는 카카오톡 채널로 남겨 주세요.</p>
+  </div>
+</main>
+<footer>© 2026 달토끼 팝업스토어 | 서울시 보름구 달빛로 11</footer>
+<a class="cart" href="#top">🛒<span class="count">3</span></a>
+</body>
+</html>
