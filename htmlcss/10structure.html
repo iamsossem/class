@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>멍냥하우스 - 구조 보기</title>
+  <style>
+    /* 학습용 구조 보기 스타일입니다. 실제 과제 코드에는 이 스타일이 없습니다. */
+    body { font-family: sans-serif; line-height: 1.6; max-width: 760px; margin: 0 auto; padding: 16px; }
+    body::before { content: "구조 보기: 점선 상자 = 태그 이름 라벨, 파란 배경 = label, 빨간 점선 = 입력 요소(input, select, textarea, button, iframe)"; display: block; font-size: 13px; background: #fff8d6; border: 1px solid #e6d27a; padding: 8px 10px; margin-bottom: 12px; }
+    header, main, section, form, footer { position: relative; margin: 10px 0; padding: 26px 12px 10px; }
+    fieldset { position: relative; margin: 14px 0; padding: 14px 12px 8px; }
+    header::before, main::before, section::before, form::before, footer::before, fieldset::before { position: absolute; top: 0; left: 0; font: 11px/1 monospace; color: #fff; padding: 4px 7px; }
+    header { border: 2px dashed #2563eb; }  header::before { content: "<header>"; background: #2563eb; }
+    main { border: 2px dashed #16a34a; }    main::before { content: "<main>"; background: #16a34a; }
+    section { border: 2px dashed #d97706; } section::before { content: "<section id>"; background: #d97706; }
+    form { border: 2px dashed #9333ea; }
+    form[method="get"]::before { content: "<form method=get> 값이 주소창에 보임"; background: #9333ea; }
+    form[method="post"]::before { content: "<form method=post> 값이 주소창에 남지 않음"; background: #9333ea; }
+    footer { border: 2px dashed #475569; }  footer::before { content: "<footer>"; background: #475569; }
+    fieldset { border: 2px dashed #0891b2; } fieldset::before { content: "<fieldset> + <legend>"; background: #0891b2; top: -14px; right: 8px; left: auto; }
+    legend { font-weight: bold; }
+    label { background: #dbeafe; padding: 1px 6px; border-radius: 3px; margin-right: 4px; }
+    input, select, textarea, button, iframe { outline: 2px dotted #ef4444; outline-offset: 2px; margin-right: 10px; }
+    p { margin: 8px 0; }
+    iframe { display: block; max-width: 100%; margin: 0 0 12px; }
+  </style>
+  <meta name="description" content="반려동물 호텔 예약, 멍냥하우스에서 온라인으로 간편하게 신청하세요.">
+  <!-- 나중에 붙일 디자인 파일과 기능 파일의 연결 자리 -->
+  <!-- defer: 문서를 모두 읽은 뒤에 스크립트를 실행한다 -->
+</head>
+<body>
+  <header>
+    <h1>멍냥하우스</h1>
+  </header>
+
+  <main>
+    <!-- 구역 1: 예약 조회 -->
+    <section id="lookup">
+      <h2>예약 조회</h2>
+
+      <!-- get: 예약번호가 주소창에 남아도 괜찮고, 링크로 저장해 두면 편하다는 요구 -->
+      <form method="get">
+        <p>
+          <label for="booking-number">예약번호</label>
+          <input type="text" id="booking-number" name="booking" required>
+          <button type="submit">조회하기</button>
+        </p>
+      </form>
+    </section>
+
+    <!-- 구역 2: 예약 신청 -->
+    <section id="reserve">
+      <h2>예약 신청</h2>
+
+      <!-- post: 비밀번호가 주소창과 기록에 남으면 안 된다는 요구
+           enctype: 사진 파일을 post로 보내려면 multipart/form-data가 필요하다 -->
+      <form method="post" enctype="multipart/form-data">
+
+        <fieldset>
+          <legend>보호자 정보</legend>
+          <p>
+            <label for="guardian-name">이름</label>
+            <input type="text" id="guardian-name" name="guardian_name" required>
+          </p>
+          <p>
+            <label for="guardian-phone">연락처</label>
+            <input type="tel" id="guardian-phone" name="guardian_phone" placeholder="010-0000-0000" required>
+          </p>
+          <p>
+            <label for="guardian-email">이메일</label>
+            <input type="email" id="guardian-email" name="guardian_email" placeholder="example@email.com" required>
+          </p>
+          <p>
+            <label for="password">예약 비밀번호 (4~12자)</label>
+            <input type="password" id="password" name="password" minlength="4" maxlength="12" autocomplete="new-password" required>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>반려동물 정보</legend>
+          <p>
+            <label for="pet-name">이름</label>
+            <input type="text" id="pet-name" name="pet_name" required>
+          </p>
+
+          <!-- 종류: 질문 제목(legend)을 붙여 한 묶음으로 읽히게 한다 -->
+          <fieldset>
+            <legend>종류</legend>
+            <input type="radio" id="pet-dog" name="pet_type" value="dog" checked>
+            <label for="pet-dog">강아지</label>
+            <input type="radio" id="pet-cat" name="pet_type" value="cat">
+            <label for="pet-cat">고양이</label>
+            <input type="radio" id="pet-etc" name="pet_type" value="etc">
+            <label for="pet-etc">기타</label>
+          </fieldset>
+
+          <p>
+            <label for="pet-age">나이(살)</label>
+            <input type="number" id="pet-age" name="pet_age" min="0">
+          </p>
+          <p>
+            <label for="pet-weight">몸무게(kg)</label>
+            <input type="number" id="pet-weight" name="pet_weight" min="0" step="0.1">
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>맡기는 기간</legend>
+          <p>
+            <label for="check-in">입실일</label>
+            <input type="date" id="check-in" name="check_in" required>
+          </p>
+          <p>
+            <label for="check-out">퇴실일</label>
+            <input type="date" id="check-out" name="check_out" required>
+          </p>
+        </fieldset>
+
+        <!-- 같은 질문의 선택지이므로 name을 service로 똑같이 쓴다 -->
+        <fieldset>
+          <legend>추가 서비스</legend>
+          <input type="checkbox" id="service-bath" name="service" value="bath">
+          <label for="service-bath">목욕</label>
+          <input type="checkbox" id="service-walk" name="service" value="walk">
+          <label for="service-walk">산책</label>
+          <input type="checkbox" id="service-cctv" name="service" value="cctv">
+          <label for="service-cctv">실시간 CCTV 알림</label>
+        </fieldset>
+
+        <p>
+          <label for="notes">특이사항</label><br>
+          <!-- textarea는 여는 태그와 닫는 태그 사이에 쓴 글이 처음부터 들어 있는 글이 된다 -->
+          <textarea id="notes" name="notes" rows="5" cols="40">식사량, 복용 중인 약, 무서워하는 것을 적어 주세요</textarea>
+        </p>
+
+        <p>
+          <label for="photos">사진</label>
+          <input type="file" id="photos" name="photos" accept="image/*" multiple>
+        </p>
+
+        <p>
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">이용약관에 동의합니다.</label>
+        </p>
+
+        <p>
+          <button type="submit">예약 신청하기</button>
+          <button type="reset">다시 쓰기</button>
+        </p>
+      </form>
+    </section>
+
+    <!-- 구역 3: 시설 소개와 오시는 길 -->
+    <section id="info">
+      <h2>시설 소개와 오시는 길</h2>
+      <!-- 두 iframe의 title이 서로 달라야 화면을 읽어 주는 프로그램이 구별할 수 있다 -->
+      <iframe srcdoc="&lt;body style=&quot;margin:0;background:#e5efe0;font:18px sans-serif;display:flex;align-items:center;justify-content:center;height:100vh&quot;&gt;멍냥하우스 시설 소개 영상 영역&lt;/body&gt;"
+        width="560"
+        height="315"
+        title="멍냥하우스 시설 소개 영상"
+        allowfullscreen></iframe>
+      <iframe srcdoc="&lt;body style=&quot;margin:0;background:#e5efe0;font:18px sans-serif;display:flex;align-items:center;justify-content:center;height:100vh&quot;&gt;멍냥하우스 오시는 길 지도 영역&lt;/body&gt;"
+        width="600"
+        height="400"
+        title="멍냥하우스 오시는 길 지도"></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 멍냥하우스</p>
+  </footer>
+
+  <!--
+    설계 메모
+    1. 전송 방식은 "값이 주소창에 남아도 되는가"로 정한다. 조회 폼은 get, 신청 폼은 post다.
+    2. 입력칸 종류는 입력 내용으로 정한다.
+       한 줄 글자 = text, 긴 글 = textarea, 하나만 고르기 = radio, 여러 개 고르기 = checkbox, 정해진 날짜 = date.
+    3. 같은 질문의 선택지는 fieldset/legend로 묶고, radio는 name을 같게 해 하나만 선택되게, checkbox는 name을 같게 해 여러 값이 함께 전송되게 한다.
+    4. 영상과 지도는 모두 iframe이므로 title로 각각 무엇인지 알려 준다.
+    5. 지도와 영상 주소(src)는 예시다. 실제 수업에서는 학생이 서비스에서 복사한 퍼가기 코드를 사용한다.
+    6. style.css와 main.js는 빈 파일로 만들어 두면 된다.
+  -->
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모닝브루 카페 | CSS 기초 예제</title>
+
+  <!-- 1-2 ③ 외부 스타일 시트: CSS를 별도 파일로 연결 -->
+  <link rel="stylesheet" href="11style.css">
+</head>
+<body>
+
+  <!-- ========== 헤더 ========== -->
+  <header id="header">
+    <h1 class="logo">모닝브루 카페</h1>
+    <nav class="menu">
+      <a href="#coffee">오늘의 메뉴</a>
+      <a href="#lab">CSS 실험실</a>
+      <a href="#reserve">좌석 예약</a>
+    </nav>
+  </header>
+
+  <!-- ========== 히어로 (4-2 배경) ========== -->
+  <section class="hero">
+    <h2>하루를 여는 따뜻한 한 잔</h2>
+    <p>직접 로스팅한 원두로 내리는 동네 작은 카페</p>
+    <a href="#reserve" class="btn">좌석 예약하기</a>
+  </section>
+
+  <main>
+
+    <!-- ========== 오늘의 메뉴 (2-3 가상 클래스, 4-3 카드) ========== -->
+    <section id="coffee" class="section">
+      <h2 class="section-title">오늘의 메뉴</h2>
+
+      <div class="card">
+        <h3>이번 주 추천</h3>
+        <ul class="course-list">
+          <li>시그니처 바닐라 라떼</li>
+          <li>오늘의 핸드드립 커피</li>
+          <li>제주 말차 크림 라떼</li>
+          <li>수제 쿠키 &amp; 스콘</li>
+          <li>시즌 한정 밤 라떼</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>매장 안내</h3>
+        <p>매일 08:00 ~ 21:00 운영, 매주 월요일은 쉽니다.</p>
+        <p class="note">※ 카드에 마우스를 올려 보세요. 그림자가 진해집니다.</p>
+      </div>
+    </section>
+
+    <!-- ========== CSS 실험실 (2-2 결합 선택자, 2-4 우선순위, 3 색상·단위) ========== -->
+    <section id="lab" class="section">
+      <h2 class="section-title">CSS 실험실</h2>
+
+      <!-- 실험 1. 자손 선택자 vs 자식 선택자 -->
+      <div class="card">
+        <h3>실험 1. 자손 vs 자식</h3>
+        <div id="main">
+          <p>main의 자식 p</p>
+          <div>
+            <p>main의 손자 p</p>
+          </div>
+        </div>
+        <p class="note">#main p (자손)는 둘 다 파랑, #main &gt; p (자식)는 첫 번째만 빨강 → 어떤 색이 최종일까요?</p>
+      </div>
+
+      <!-- 실험 2. 우선순위 -->
+      <div class="card">
+        <h3>실험 2. 우선순위 (무슨 색일까?)</h3>
+        <p id="title" class="sub">태그 &lt; 클래스 &lt; 아이디</p>
+        <p class="sub" style="color: purple;">인라인 스타일은 클래스보다 강하다</p>
+        <p class="sub">클래스만 있는 문단</p>
+      </div>
+
+      <!-- 실험 3. 색상 표현 -->
+      <div class="card">
+        <h3>실험 3. 색상 표현 4가지</h3>
+        <p class="c-name">색상 이름: tomato</p>
+        <p class="c-hex">HEX 코드: #2f5bea</p>
+        <p class="c-rgb">RGB: rgb(0, 128, 255)</p>
+        <p class="c-rgba">RGBA: rgba(0, 128, 255, 0.5)</p>
+      </div>
+
+      <!-- 실험 4. rgba vs opacity -->
+      <div class="card">
+        <h3>실험 4. rgba vs opacity</h3>
+        <div class="box box-rgba">배경만 반투명 (rgba)</div>
+        <div class="box box-opacity">글자까지 반투명 (opacity)</div>
+      </div>
+
+      <!-- 실험 5. em vs rem -->
+      <div class="card">
+        <h3>실험 5. em vs rem</h3>
+        <div class="outer">
+          <p class="em-sample">2em → 부모 20px × 2 = 40px</p>
+          <p class="rem-sample">2rem → html 16px × 2 = 32px</p>
+        </div>
+      </div>
+
+      <!-- 실험 6. 퍼센트 단위 -->
+      <div class="card">
+        <h3>실험 6. % 단위 (부모 기준)</h3>
+        <div class="bar-wrap">
+          <div class="bar bar-80">80%</div>
+          <div class="bar bar-50">50%</div>
+          <div class="bar bar-30">30%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 좌석 예약 (2-3 :focus, :hover, :active) ========== -->
+    <section id="reserve" class="section">
+      <h2 class="section-title">좌석 예약</h2>
+      <div class="card">
+        <form>
+          <label for="name">이름</label>
+          <input type="text" id="name" placeholder="이름을 입력하세요">
+          <label for="tel">연락처</label>
+          <input type="text" id="tel" placeholder="010-0000-0000">
+          <button type="button" class="btn">예약하기</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 모닝브루 카페 · CSS 기초 예제</p>
+  </footer>
+
+</body>
+</html>

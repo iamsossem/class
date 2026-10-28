@@ -1,0 +1,118 @@
+/* 전체: 패딩과 테두리를 width 안에 포함해서 계산 */
+* {
+  box-sizing: border-box;
+}
+
+/* 글자색과 줄 간격은 body에만 써도 자식에게 상속된다 */
+body {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 머리말 */
+#top {
+  background-color: #6f4e37;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#top h1 {
+  color: white;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.slogan {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+/* 본문 구역 */
+main {
+  padding: 1.5rem;
+}
+
+.menu {
+  background-color: #fdf6ec;
+  padding: 1.5rem;
+}
+
+.menu h2,
+.info h2 {
+  font-size: 1.6rem;
+  border-bottom: 2px solid #6f4e37;
+  padding-bottom: 0.5rem;
+}
+
+/* 메뉴 카드 */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5em;
+  margin: 1rem 0;
+  width: 90%;
+}
+
+/* .card보다 아래에 써야 테두리가 덮어써진다 */
+.best {
+  border: 2px solid #c0392b;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  color: #6f4e37;
+}
+
+.card > .price {
+  font-weight: bold;
+  color: #c0392b;
+  text-align: right;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 링크 */
+a {
+  color: #6f4e37;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c0392b;
+  text-decoration: underline;
+}
+
+a:focus {
+  background-color: #fff3b0;
+}
+
+/* 이용 안내 목록 */
+.info li {
+  border-bottom: 1px dashed #ccc;
+  padding: 0.5rem 0;
+}
+
+.info li:first-child {
+  font-weight: bold;
+}
+
+.info li:nth-child(even) {
+  background-color: #f5efe6;
+}
+
+.info li:last-child {
+  border-bottom: none;
+}
+
+/* 꼬리말 */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}

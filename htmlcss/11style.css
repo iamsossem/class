@@ -1,0 +1,283 @@
+/* =====================================================
+   CSS 기초 예제 - style.css
+   (노션 교안: CSS를 활용한 웹 페이지 디자인 기초)
+   ===================================================== */
+
+/* [2-1 ①] 전체 선택자: 기본 여백 초기화
+   [4-4 ③] box-sizing: border-box 를 전체에 적용하고 시작 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* [3-2 ②③] rem의 기준이 되는 html 글자 크기 */
+html {
+  font-size: 16px;
+}
+
+/* [2-4 ①] 상속: body에 준 글자색, 줄간격이 자식 전체에 물려진다 */
+body {
+  color: #333;
+  line-height: 1.6;            /* [4-1 ③] 단위 없는 숫자 */
+  background-color: #f5f7fb;
+}
+
+/* [2-1 ②] 태그 선택자 */
+p { color: black; }
+a { text-decoration: none; }   /* [4-1 ②] 링크 밑줄 제거 */
+
+/* =====================================================
+   헤더
+   ===================================================== */
+/* [2-1 ④] 아이디 선택자 (한 페이지에 하나뿐인 요소) */
+#header {
+  padding: 1.25rem 2rem;
+  text-align: center;          /* [4-1 ②] 로고와 메뉴를 가운데 정렬 */
+  background-color: #1f2a44;
+}
+
+/* [2-1 ③] 클래스 선택자 */
+.logo {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;     /* [4-1 ③] 자간 */
+  margin-bottom: 0.75rem;
+}
+
+/* [2-2 ②] 자식 선택자: .menu 바로 아래 a만 (a는 기본이 글자처럼 가로로 나열됨) */
+.menu > a {
+  color: #cfd8ee;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* [2-3 ②] 상태 선택자: 마우스를 올렸을 때 */
+.menu > a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);   /* [3-1 ③] rgba */
+}
+
+/* =====================================================
+   히어로 (배경 속성)
+   ===================================================== */
+.hero {
+  padding: 5rem 1.5rem;
+  text-align: center;          /* [4-1 ②] 가로 정렬 */
+  color: #fff;
+
+  /* [4-2] 배경색 (이미지를 쓴다면 아래 주석처럼 url()로 지정) */
+  background-color: #2f5bea;
+  /* background-image: url('images/hero.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+}
+
+.hero h2 {
+  font-size: 2rem;             /* [3-2] 글자는 rem */
+  font-weight: 800;
+  line-height: 1.4;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);   /* [4-3 ④] 글자 그림자 */
+}
+
+.hero p {
+  color: #e6ebff;
+  margin: 1rem 0 2rem;         /* [4-4 ②] 위 오른쪽/왼쪽 아래 */
+}
+
+/* =====================================================
+   버튼 (:hover, :active)
+   ===================================================== */
+.btn {
+  padding: 0.75rem 1.75rem;    /* [4-4 ②] 상하 좌우 */
+  color: #fff;
+  background-color: #ff6600;   /* [3-1 ②] HEX */
+  border: 2px solid #ff6600;   /* [4-3 ①] 두께 모양 색상 */
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.35);
+}
+
+.btn:hover {
+  background-color: #e05500;
+  border-color: #e05500;
+}
+
+/* [2-3 ②] 누르는 순간 */
+.btn:active {
+  background-color: #b84400;
+  border-color: #b84400;
+  box-shadow: none;
+}
+
+/* =====================================================
+   본문 레이아웃
+   ===================================================== */
+.section {
+  max-width: 720px;
+  margin: 3rem auto;           /* 요소 자체를 가운데로 */
+  padding: 0 1.25rem;
+}
+
+/* [4-2] 배경색 + [4-3 ②] 둥근 모서리로 만든 제목 띠 */
+.section-title {
+  font-size: 1.5rem;
+  color: #b84400;
+  text-align: center;               /* [4-1 ②] 가운데 정렬 */
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background-color: #ffe9d6;
+  border-radius: 12px;
+}
+
+/* [4-3] 카드: 테두리 + 둥근 모서리 + 그림자 */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  color: #1f2a44;
+  margin-bottom: 0.75rem;
+}
+
+.note {
+  font-size: 0.875rem;
+  color: gray;
+  margin-top: 0.75rem;
+}
+
+/* =====================================================
+   [2-3 ③] 위치 선택자
+   ===================================================== */
+.course-list li {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+.course-list li:nth-child(odd)  { background-color: #f0f4ff; }   /* 홀수 */
+.course-list li:first-child     { font-weight: 700; color: #2f5bea; }
+.course-list li:last-child      { font-weight: 700; color: #ff6600; }
+.course-list li:nth-child(2)    { text-decoration: underline; }
+
+/* =====================================================
+   CSS 실험실
+   ===================================================== */
+
+/* ---- 실험 1. 자손 vs 자식 (같은 우선순위 → 나중에 쓴 규칙 승) ---- */
+#main p   { color: blue; }   /* 자손: 두 p 모두 */
+#main > p { color: red; }    /* 자식: 첫 번째 p만 → 빨강으로 덮어씀 */
+
+/* ---- 실험 2. 우선순위 ---- */
+/* p { color: black; } 는 위에서 이미 선언 (태그, 가장 약함) */
+.sub    { color: blue; font-weight: 700; }   /* 클래스 */
+#title  { color: red; }                      /* 아이디: 최종 빨강 */
+/* 두 번째 문단은 HTML의 인라인 style="color: purple;" 이 가장 강함 */
+
+/* ---- 실험 3. 색상 표현 4가지 ---- */
+.c-name { color: tomato; }                 /* 이름 */
+.c-hex  { color: #2f5bea; }                /* HEX */
+.c-rgb  { color: rgb(0, 128, 255); }       /* RGB */
+.c-rgba { color: rgba(0, 128, 255, 0.5); } /* RGBA (글자만 반투명) */
+
+/* ---- 실험 4. rgba vs opacity ---- */
+.box {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+/* 배경만 반투명, 글자는 또렷 */
+.box-rgba    { background-color: rgba(47, 91, 234, 0.4); color: #1f2a44; }
+
+/* 요소 전체(글자 포함)가 반투명 */
+.box-opacity { background-color: rgb(47, 91, 234); opacity: 0.4; }
+
+/* ---- 실험 5. em vs rem ---- */
+.outer { font-size: 20px; }          /* em의 기준 */
+
+.em-sample  { font-size: 2em; }      /* 20px × 2 = 40px */
+.rem-sample { font-size: 2rem; }     /* 16px × 2 = 32px */
+
+/* ---- 실험 6. % 단위: 부모(.bar-wrap) 너비 기준 ---- */
+.bar-wrap {
+  width: 100%;
+  background-color: #eef1f8;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.bar {
+  height: 2rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 6px;
+  background-color: #2f5bea;
+}
+
+.bar-80 { width: 80%; }
+.bar-50 { width: 50%; background-color: #7b3fe4; }
+.bar-30 { width: 30%; background-color: #ff6600; margin-bottom: 0; }
+
+/* =====================================================
+   폼 (:focus)
+   ===================================================== */
+form label {
+  font-weight: 700;
+}
+
+/* width: 100%라서 입력칸은 자연스럽게 label 아래 줄로 내려간다 */
+form input {
+  width: 100%;
+  margin: 0.375rem 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* [2-3 ②] 입력칸에 커서가 들어갔을 때 */
+form input:focus {
+  outline: none;
+  border-color: #2f5bea;
+  box-shadow: 0 0 0 3px rgba(47, 91, 234, 0.2);
+}
+
+form .btn {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* =====================================================
+   푸터
+   ===================================================== */
+.footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #1f2a44;
+}
+
+.footer p {
+  color: #9aa7c7;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>골목일보 - 구조 보기</title>
+  <style>
+    /* 학습용 구조 보기 스타일입니다. 실제 과제 코드에는 이 스타일이 없습니다. */
+    body { font-family: sans-serif; line-height: 1.5; max-width: 760px; margin: 0 auto; padding: 16px; }
+    body::before { content: "구조 보기: 점선 상자 = 시맨틱 태그, 왼쪽 위 라벨 = 태그 이름, 노란 배경 = strong, 빨간 점선 = span"; display: block; font-size: 13px; background: #fff8d6; border: 1px solid #e6d27a; padding: 8px 10px; margin-bottom: 12px; }
+    header, nav, main, section, article, aside, footer { position: relative; margin: 10px 0; padding: 26px 12px 10px; }
+    header::before, nav::before, main::before, section::before, article::before, aside::before, footer::before { position: absolute; top: 0; left: 0; font: 11px/1 monospace; color: #fff; padding: 4px 7px; }
+    header { border: 2px dashed #2563eb; }  header::before { content: "<header>"; background: #2563eb; }
+    body > header::before { content: "<header> 사이트 머리말 (banner)"; }
+    article header::before { content: "<header> 기사 머리말"; }
+    nav { border: 2px dashed #0891b2; }     nav::before { content: "<nav>"; background: #0891b2; }
+    main { border: 2px dashed #16a34a; }    main::before { content: "<main>"; background: #16a34a; }
+    section { border: 2px dashed #d97706; } section::before { content: "<section>"; background: #d97706; }
+    article { border: 2px dashed #9333ea; } article::before { content: "<article>"; background: #9333ea; }
+    aside { border: 2px dashed #db2777; }   aside::before { content: "<aside>"; background: #db2777; }
+    footer { border: 2px dashed #475569; }  footer::before { content: "<footer>"; background: #475569; }
+    body > footer::before { content: "<footer> 사이트 꼬리말 (contentinfo)"; }
+    article footer::before { content: "<footer> 기사 꼬리말"; }
+    a { margin-right: 14px; }
+    strong { background: #fde68a; }
+    span { outline: 1px dotted #ef4444; }
+  </style>
+</head>
+<body>
+  <!-- 사이트 머리말: 신문 이름 + 메뉴 -->
+  <header>
+    <h1>골목일보</h1>
+    <nav>
+      <a href="#">홈</a>
+      <a href="#">동네 소식</a>
+      <a href="#">문화</a>
+      <a href="#">제보하기</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 구역 1: 오늘의 헤드라인 -->
+    <section>
+      <h2>오늘의 헤드라인</h2>
+
+      <article>
+        <header>
+          <h3>골목시장, 30년 만에 지붕을 새로 얹다</h3>
+          <!-- span: 글쓴이와 날짜는 글자 일부만 묶는 정보라 의미 없는 인라인 상자인 span을 사용 -->
+          <p>글 <span>김하늘 기자</span> | <span>2026.10.25</span></p>
+        </header>
+        <p>골목시장의 낡은 지붕이 30년 만에 새것으로 바뀌었다. 상인회는 <strong>비 오는 날에도 장사할 수 있게 됐다</strong>며 반겼다.</p>
+        <footer>
+          <p>분류: 지역</p>
+        </footer>
+      </article>
+    </section>
+
+    <!-- 구역 2: 동네 소식 -->
+    <section>
+      <h2>동네 소식</h2>
+
+      <article>
+        <header>
+          <h3>골목도서관 독서모임 회원 모집</h3>
+          <p>글 <span>이서준 기자</span> | <span>2026.10.24</span></p>
+        </header>
+        <p>골목도서관이 매달 첫째 주 목요일에 모이는 독서모임 회원을 모집한다. 참가비는 <strong>무료</strong>이며 신청은 도서관 창구에서 받는다.</p>
+        <footer>
+          <p>분류: 문화</p>
+        </footer>
+      </article>
+
+      <article>
+        <header>
+          <h3>주민센터 스마트폰 교실 수강생 모집</h3>
+          <p>글 <span>박지유 기자</span> | <span>2026.10.23</span></p>
+        </header>
+        <p>주민센터가 어르신을 위한 스마트폰 교실을 연다. 수업은 주 2회이며 <strong>선착순 20명</strong>까지 신청할 수 있다.</p>
+        <footer>
+          <p>분류: 생활</p>
+        </footer>
+      </article>
+
+      <article>
+        <header>
+          <h3>골목 사진전 &lt;옛 간판들&gt; 개막</h3>
+          <p>글 <span>김하늘 기자</span> | <span>2026.10.22</span></p>
+        </header>
+        <p>사라져 가는 골목 간판을 담은 사진전이 문을 열었다. 전시는 <strong>이달 말까지</strong> 이어진다.</p>
+        <footer>
+          <p>분류: 문화</p>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <!-- 보조 영역: 많이 읽은 소식 -->
+  <aside>
+    <h2>많이 읽은 소식</h2>
+    <p>1. 골목시장, 30년 만에 지붕을 새로 얹다</p>
+    <p>2. 주민센터 스마트폰 교실 수강생 모집</p>
+    <p>3. 골목 사진전 &lt;옛 간판들&gt; 개막</p>
+  </aside>
+
+  <!-- 사이트 꼬리말: 저작권 + 편집부 연락처 -->
+  <footer>
+    <p>© 2026 골목일보 | 편집부 02-000-0000 | news@golmok.example</p>
+  </footer>
+
+  <!--
+    설계 메모
+    1. body 바로 아래 header는 사이트 전체의 머리말이라 스크린 리더가 banner로 인식한다.
+       article 안의 header는 그 기사만의 머리말이어서 banner가 되지 않는다.
+    2. 기사 하나하나는 따로 떼어 다른 곳에 옮겨도 의미가 완결되므로 article을 썼다.
+       section은 그런 기사들을 주제별로 묶는 구역(헤드라인, 동네 소식)에 썼다.
+  -->
+</body>
+</html>

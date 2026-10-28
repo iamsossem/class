@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- 한글이 깨지지 않게 하는 문자 인코딩 -->
+  <meta charset="UTF-8">
+  <!-- 모바일 화면 너비에 맞추는 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>흙내음 공방 - 구조 보기</title>
+  <style>
+    /* 학습용 구조 보기 스타일입니다. 실제 과제 코드에는 이 스타일이 없습니다. */
+    body { font-family: sans-serif; line-height: 1.6; max-width: 760px; margin: 0 auto; padding: 16px; }
+    body::before { content: "구조 보기: 점선 상자 = 태그 이름 라벨, 파란 배경 = label, 빨간 점선 = 입력 요소(input, select, textarea, button, iframe)"; display: block; font-size: 13px; background: #fff8d6; border: 1px solid #e6d27a; padding: 8px 10px; margin-bottom: 12px; }
+    header, main, section, form, fieldset { position: relative; margin: 10px 0; padding: 26px 12px 10px; }
+    header::before, main::before, section::before, form::before, fieldset::before { position: absolute; top: 0; left: 0; font: 11px/1 monospace; color: #fff; padding: 4px 7px; }
+    header { border: 2px dashed #2563eb; }  header::before { content: "<header>"; background: #2563eb; }
+    main { border: 2px dashed #16a34a; }    main::before { content: "<main>"; background: #16a34a; }
+    section { border: 2px dashed #d97706; } section::before { content: "<section id>"; background: #d97706; }
+    form { border: 2px dashed #9333ea; }    form::before { content: "<form action method=get>"; background: #9333ea; }
+    fieldset { border: 2px dashed #0891b2; } fieldset::before { content: "<fieldset> + <legend>"; background: #0891b2; top: -14px; right: 8px; left: auto; }
+    legend { font-weight: bold; }
+    label { background: #dbeafe; padding: 1px 6px; border-radius: 3px; margin-right: 4px; }
+    input, select, textarea, button, iframe { outline: 2px dotted #ef4444; outline-offset: 2px; margin-right: 10px; }
+    p { margin: 8px 0; }
+  </style>
+  <meta name="description" content="동네 도예 공방 흙내음의 원데이 클래스를 온라인으로 신청하는 페이지입니다.">
+</head>
+<body>
+  <header>
+    <h1>원데이 클래스 신청</h1>
+  </header>
+
+  <main>
+    <!-- 구역 1: 신청서 -->
+    <section id="apply">
+      <h2>신청서</h2>
+
+      <!-- action이 비어 있으면 현재 주소로, method="get"이면 입력값이 주소창에 붙어서 전송된다 -->
+      <form action="" method="get">
+
+        <!-- 기본 정보: label의 for와 input의 id를 똑같이 맞춘다 -->
+        <p>
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name" required>
+        </p>
+        <p>
+          <label for="email">이메일</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </p>
+        <p>
+          <label for="phone">연락처</label>
+          <input type="tel" id="phone" name="phone" placeholder="010-0000-0000">
+        </p>
+        <p>
+          <label for="date">희망 날짜</label>
+          <input type="date" id="date" name="date" required>
+        </p>
+        <p>
+          <label for="people">인원</label>
+          <input type="number" id="people" name="people" min="1" max="6" value="1">
+        </p>
+
+        <!-- 클래스 종류: 하나만 고르는 목록, selected로 처음 선택 상태를 정한다 -->
+        <p>
+          <label for="class">클래스 종류</label>
+          <select id="class" name="class">
+            <option value="mug" selected>머그컵 만들기</option>
+            <option value="plate">접시 만들기</option>
+            <option value="vase">화병 만들기</option>
+          </select>
+        </p>
+
+        <!-- 희망 시간대: name이 같은 radio는 하나만 선택된다 -->
+        <fieldset>
+          <legend>희망 시간대</legend>
+          <input type="radio" id="time-am" name="time" value="am">
+          <label for="time-am">오전(10시)</label>
+          <input type="radio" id="time-pm" name="time" value="pm">
+          <label for="time-pm">오후(2시)</label>
+        </fieldset>
+
+        <!-- 추가 옵션: checkbox는 여러 개를 동시에 선택할 수 있다 -->
+        <fieldset>
+          <legend>추가 옵션</legend>
+          <input type="checkbox" id="option-apron" name="option" value="apron">
+          <label for="option-apron">앞치마 대여</label>
+          <input type="checkbox" id="option-gift" name="option" value="gift">
+          <label for="option-gift">선물 포장</label>
+        </fieldset>
+
+        <!-- 긴 글 -->
+        <p>
+          <label for="memo">요청사항</label><br>
+          <textarea id="memo" name="memo" rows="5"></textarea>
+        </p>
+
+        <!-- 파일: accept로 이미지 파일만 고르게 한다 -->
+        <p>
+          <label for="photo">참고 사진</label>
+          <input type="file" id="photo" name="photo" accept="image/*">
+        </p>
+
+        <!-- 개인정보 동의: 체크하지 않으면 제출되지 않는다 -->
+        <p>
+          <input type="checkbox" id="agree" name="agree" required>
+          <label for="agree">개인정보 수집에 동의합니다.</label>
+        </p>
+
+        <!-- 버튼: type을 명시해 동작을 분명히 한다 -->
+        <p>
+          <button type="submit">신청하기</button>
+          <button type="reset">다시 쓰기</button>
+        </p>
+      </form>
+    </section>
+
+    <!-- 구역 2: 오시는 길 -->
+    <section id="location">
+      <h2>오시는 길</h2>
+      <!-- 지도 서비스의 [공유] → [퍼가기]에서 복사한 코드를 붙여넣고 크기와 title을 맞춘다 -->
+      <iframe srcdoc="&lt;body style=&quot;margin:0;background:#e5efe0;font:20px sans-serif;display:flex;align-items:center;justify-content:center;height:100vh&quot;&gt;지도가 표시되는 영역&lt;/body&gt;"
+        width="600"
+        height="400"
+        title="흙내음 공방 오시는 길 지도"></iframe>
+    </section>
+  </main>
+
+  <!--
+    설계 메모
+    1. label은 글자를 눌러도 입력칸이 선택되게 하고 스크린 리더가 입력칸의 용도를 읽게 한다.
+       placeholder는 입력하면 사라지므로 label을 대신하지 않고 입력 예시로만 쓴다.
+    2. 값을 전송하려면 name이 필요하다. 라디오는 name이 같아야 하나만 선택되고, 체크박스는 같은 name으로 여러 값이 함께 전송된다.
+    3. required, type="email", min/max 같은 속성만으로도 브라우저가 입력을 검사해 준다.
+    4. 지도 주소(src)는 예시 위치다. 실제 수업에서는 학생이 지도 서비스에서 복사한 퍼가기 코드를 사용한다.
+  -->
+</body>
+</html>

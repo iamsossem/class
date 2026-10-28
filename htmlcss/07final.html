@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>바람길 - 제주 2박 3일 걷기 여행</title>
+</head>
+<body>
+  <!-- 머리말: 상품명 + 같은 페이지 이동 메뉴. h1의 id는 꼬리말의 "맨 위로" 링크가 찾아오는 자리다 -->
+  <header>
+    <h1 id="top">제주 2박 3일 걷기 여행</h1>
+    <nav>
+      <a href="#schedule">일정 보기</a>
+      <a href="#price">요금 보기</a>
+      <a href="#packing">준비물 보기</a>
+      <a href="#media">오디오·영상 보기</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>출발: <strong>10월 30일(금)~11월 1일(일)</strong>, 제주공항에서 모입니다.</p>
+    <p>
+      바다를 따라 걷고, 오름에서 해가 지는 것을 보는 2박 3일 여행입니다.<br>
+      숙박과 식사가 포함되어 있습니다.
+    </p>
+
+    <!-- 구역 1: 일정 -->
+    <section id="schedule">
+      <h2>
+        <!-- 장식용 이미지: 읽어 줄 내용이 없으므로 alt를 비운다 -->
+        <!-- [완성본 안내] src의 data:image/svg+xml... 은 회색 "이미지" 자리표시 그림이다. 실제 작업에서는 images/map-icon.png 처럼 파일 경로를 쓴다. -->
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' fill='%23666666' font-size='7' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle'%3E이미지%3C/text%3E%3C/svg%3E" alt="" width="24" height="24">
+        여행 일정
+      </h2>
+
+      <h3>1일차</h3>
+      <ol>
+        <li>공항 도착</li>
+        <li>올레길 7코스 걷기</li>
+        <li>해안 카페</li>
+        <li>숙소 체크인</li>
+      </ol>
+
+      <h3>2일차</h3>
+      <ol>
+        <li>한라산 둘레길</li>
+        <li>점심: 고사리 비빔밥</li>
+        <li>오름 일몰 감상</li>
+      </ol>
+
+      <h3>3일차</h3>
+      <ol>
+        <li>시장 구경</li>
+        <li>기념품 구매</li>
+        <li>공항 이동</li>
+      </ol>
+
+      <figure>
+        <!-- 실제 작업에서는 images/hallasan.jpg -->
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' fill='%23666666' font-size='24' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle'%3E이미지%3C/text%3E%3C/svg%3E" alt="구름이 걸린 한라산 둘레길의 숲길" width="400" height="267">
+        <figcaption>2일차에 걷는 한라산 둘레길</figcaption>
+      </figure>
+      <figure>
+        <!-- 실제 작업에서는 images/coast.jpg -->
+        <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' fill='%23666666' font-size='24' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle'%3E이미지%3C/text%3E%3C/svg%3E" alt="푸른 바다를 따라 이어진 올레길 해안 산책로" width="400" height="267">
+        <figcaption>1일차에 걷는 올레길 7코스</figcaption>
+      </figure>
+    </section>
+
+    <!-- 구역 2: 요금 -->
+    <section id="price">
+      <h2>요금 안내</h2>
+      <p>성인 <strong>278,000원</strong>부터 예약할 수 있습니다. (4명 이상 예약 시)</p>
+      <table>
+        <caption>인원별 요금(1인 기준)</caption>
+        <thead>
+          <tr>
+            <th scope="col">예약 인원</th>
+            <th scope="col">성인</th>
+            <th scope="col">어린이</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">2명 이상</th>
+            <td>298,000원</td>
+            <td>238,000원</td>
+          </tr>
+          <tr>
+            <th scope="row">4명 이상</th>
+            <td>278,000원</td>
+            <td>218,000원</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <!-- colspan: 가로로 3칸 병합 (표 전체 너비) -->
+            <td colspan="3">※ 숙박과 식사 포함, 항공권 별도</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- 구역 3: 준비물 + 용어 -->
+    <section id="packing">
+      <h2>준비물</h2>
+
+      <h3>챙길 물건</h3>
+      <ul>
+        <li>옷
+          <ul>
+            <li>바람막이</li>
+            <li>편한 운동화</li>
+            <li>모자</li>
+          </ul>
+        </li>
+        <li>생활
+          <ul>
+            <li>물병</li>
+            <li>선크림</li>
+            <li>개인 상비약</li>
+          </ul>
+        </li>
+        <li>서류
+          <ul>
+            <li>신분증</li>
+            <li>항공권</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>용어 풀이</h3>
+      <dl>
+        <dt>올레길</dt>
+        <dd>제주 해안을 따라 이어진 걷기 길</dd>
+        <dt>오름</dt>
+        <dd>제주에 있는 작고 둥근 화산 언덕</dd>
+      </dl>
+    </section>
+
+    <!-- 구역 4: 오디오 + 영상 -->
+    <section id="media">
+      <h2>오디오 가이드와 소개 영상</h2>
+
+      <h3>1일차 오디오 가이드</h3>
+      <!-- autoplay를 쓰지 않아 페이지가 열려도 저절로 재생되지 않는다 -->
+      <audio controls>
+        <source src="audio/guide-day1.mp3" type="audio/mpeg">
+        이 브라우저는 audio 태그를 지원하지 않습니다.
+      </audio>
+
+      <h3>여행 소개 영상</h3>
+      <!-- poster: 영상 재생 전 썸네일. 실제 작업에서는 images/ 폴더의 파일 경로를 쓴다 -->
+      <video controls width="480" poster="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' fill='%23666666' font-size='28' font-family='sans-serif' text-anchor='middle' dominant-baseline='middle'%3E이미지%3C/text%3E%3C/svg%3E">
+        <source src="video/intro.mp4" type="video/mp4">
+        <track kind="subtitles" src="video/intro-ko.vtt" srclang="ko" label="한국어">
+        이 브라우저는 video 태그를 지원하지 않습니다.
+      </video>
+    </section>
+  </main>
+
+  <!-- 꼬리말: 환불 안내 + 연락처 + 맨 위로 -->
+  <footer>
+    <p><a href="07refund.html">취소·환불 안내 보기</a></p>
+    <p>
+      문의:
+      <a href="tel:0640000000">전화 064-000-0000으로 걸기</a>
+      <a href="mailto:trip@windroad.example">trip@windroad.example로 메일 보내기</a>
+    </p>
+    <p><a href="#top">페이지 맨 위로 가기</a></p>
+  </footer>
+
+  <!--
+    설계 메모
+    1. 일정은 순서가 중요하므로 ol, 준비물은 종류 안에 항목이 있으므로 중첩 ul, 용어는 짝이 있으므로 dl을 쓴다.
+    2. 요금표는 열 머리글(예약 인원·성인·어린이)에 scope="col", 행 머리글(2명 이상·4명 이상)에 scope="row"를 쓴다.
+    3. 장식용 아이콘은 alt를 비우고, 정보를 주는 사진은 alt에 내용을 쓴다.
+    4. 영상과 오디오는 자동 재생을 쓰지 않는다. 소리가 갑자기 나면 불편하기 때문이다.
+    5. 링크 문구는 "여기"가 아니라 어디로 가는지 드러나게 쓴다.
+    6. [완성본 안내] 이 파일은 이미지 파일 없이도 화면이 보이도록 이미지 영역을 회색 "이미지" 그림(SVG 자리표시)으로 대신했다.
+       alt, width, height는 실제 작업과 같다. audio·video 파일이 없으므로 이 파일 안에서 재생은 되지 않는다.
+  -->
+</body>
+</html>

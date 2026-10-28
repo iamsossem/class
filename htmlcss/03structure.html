@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>모퉁이책방 - 구조 보기</title>
+  <style>
+    /* 학습용 구조 보기 스타일입니다. 실제 과제 코드에는 이 스타일이 없습니다. */
+    body { font-family: sans-serif; line-height: 1.5; max-width: 760px; margin: 0 auto; padding: 16px; }
+    body::before { content: "구조 보기: 점선 상자 = 시맨틱 태그, 왼쪽 위 라벨 = 태그 이름, 노란 배경 = strong, 빨간 점선 = span"; display: block; font-size: 13px; background: #fff8d6; border: 1px solid #e6d27a; padding: 8px 10px; margin-bottom: 12px; }
+    header, nav, main, section, article, aside, footer { position: relative; margin: 10px 0; padding: 26px 12px 10px; }
+    header::before, nav::before, main::before, section::before, article::before, aside::before, footer::before { position: absolute; top: 0; left: 0; font: 11px/1 monospace; color: #fff; padding: 4px 7px; }
+    header { border: 2px dashed #2563eb; }  header::before { content: "<header>"; background: #2563eb; }
+    body > header::before { content: "<header> 사이트 머리말 (banner)"; }
+    nav { border: 2px dashed #0891b2; }     nav::before { content: "<nav>"; background: #0891b2; }
+    main { border: 2px dashed #16a34a; }    main::before { content: "<main>"; background: #16a34a; }
+    section { border: 2px dashed #d97706; } section::before { content: "<section>"; background: #d97706; }
+    article { border: 2px dashed #9333ea; } article::before { content: "<article>"; background: #9333ea; }
+    aside { border: 2px dashed #db2777; }   aside::before { content: "<aside>"; background: #db2777; }
+    footer { border: 2px dashed #475569; }  footer::before { content: "<footer>"; background: #475569; }
+    body > footer::before { content: "<footer> 사이트 꼬리말 (contentinfo)"; }
+    a { margin-right: 14px; }
+    strong { background: #fde68a; }
+    span { outline: 1px dotted #ef4444; }
+  </style>
+</head>
+<body>
+  <!-- 머리말 -->
+  <header>
+    <h1>모퉁이책방</h1>
+    <nav>
+      <a href="#">소개</a>
+      <a href="#">이달의 책</a>
+      <a href="#">오시는 길</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 서점 소개 -->
+    <section>
+      <h2>서점 소개</h2>
+      <p>골목 모퉁이에서 손님과 책을 천천히 이어 주는 작은 서점입니다.</p>
+      <p>매주 토요일 오후에는 <strong>작은 북토크</strong>가 열립니다.</p>
+    </section>
+
+    <!-- 이달의 책 ① -->
+    <article>
+      <h2>이달의 책 ①</h2>
+      <p>&lt;골목의 계절&gt; - 동네 골목을 사계절 동안 걸으며 쓴 산문집이다.</p>
+    </article>
+
+    <!-- 이달의 책 ② -->
+    <article>
+      <h2>이달의 책 ②</h2>
+      <p>&lt;느린 편지&gt; - 천천히 읽을수록 따뜻해지는 짧은 편지 모음이다.</p>
+    </article>
+
+    <!-- 영업 안내 -->
+    <aside>
+      <h2>영업 안내</h2>
+      <p>평일 <span>10:00~20:00</span></p>
+      <p>일요일은 쉽니다.</p>
+    </aside>
+  </main>
+
+  <!-- 꼬리말 -->
+  <footer>
+    <p>© 2026 모퉁이책방 | 서울시 모퉁이구 책길 1</p>
+  </footer>
+  <!-- 확인 메모: 가로 전체를 차지하는 요소 = p(블록), 글자 폭만큼만 차지하는 요소 = span(인라인) -->
+</body>
+</html>
