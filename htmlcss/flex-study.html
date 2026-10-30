@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>display: flex 속성 스터디</title>
+  <link rel="stylesheet" href="flex-study.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1>display: flex 속성 스터디</h1>
+  <p>버튼을 눌러 값을 바꿔보면서 Flexbox 속성을 눈으로 익혀보세요</p>
+</header>
+
+<main>
+  <nav class="toc">
+    <a href="#direction">flex-direction</a>
+    <a href="#justify">justify-content</a>
+    <a href="#align-items">align-items</a>
+    <a href="#wrap">flex-wrap</a>
+    <a href="#align-content">align-content</a>
+    <a href="#gap">gap</a>
+    <a href="#grow">flex-grow</a>
+    <a href="#shrink">flex-shrink</a>
+    <a href="#basis">flex-basis</a>
+    <a href="#order">order</a>
+    <a href="#align-self">align-self</a>
+  </nav>
+
+  <!-- 0. 기본 개념 -->
+  <section class="card">
+    <h2>0️⃣ Flexbox 기본 개념</h2>
+    <p class="desc">부모에 <code>display: flex</code>를 주면 자식들이 가로로 한 줄 배치됩니다. 속성은 <b>부모에 주는 것</b>과 <b>자식에 주는 것</b>으로 나뉩니다.</p>
+    <span class="badge parent">부모(컨테이너)</span>
+    <p>flex-direction · justify-content · align-items · flex-wrap · align-content · gap</p>
+    <br>
+    <span class="badge child">자식(아이템)</span>
+    <p>flex-grow · flex-shrink · flex-basis · order · align-self</p>
+  </section>
+
+  <!-- 1. flex-direction -->
+  <section class="card" id="direction">
+    <h2>1️⃣ <code>flex-direction</code></h2>
+    <p class="desc">아이템이 나열되는 <b>주축(main axis)</b> 방향을 정합니다.</p>
+    <span class="badge parent">부모에 적용</span>
+    <div class="chips" data-target="#s-direction" data-prop="flex-direction">
+      <button class="chip active">row</button>
+      <button class="chip">row-reverse</button>
+      <button class="chip">column</button>
+      <button class="chip">column-reverse</button>
+    </div>
+    <div class="stage tall" id="s-direction">
+      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-direction"></div>
+  </section>
+
+  <!-- 2. justify-content -->
+  <section class="card" id="justify">
+    <h2>2️⃣ <code>justify-content</code></h2>
+    <p class="desc"><b>주축</b> 방향 정렬. 가로 방향(row)일 때는 좌우 정렬이에요.</p>
+    <span class="badge parent">부모에 적용</span>
+    <div class="chips" data-target="#s-justify" data-prop="justify-content">
+      <button class="chip active">flex-start</button>
+      <button class="chip">flex-end</button>
+      <button class="chip">center</button>
+      <button class="chip">space-between</button>
+      <button class="chip">space-around</button>
+      <button class="chip">space-evenly</button>
+    </div>
+    <div class="stage" id="s-justify">
+      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-justify"></div>
+    <p class="tip">💡 space-between: 양끝 붙고 사이 간격 균등 / space-around: 아이템 양옆 여백 균등 / space-evenly: 모든 간격(양끝 포함) 완전 균등</p>
+  </section>
+
+  <!-- 3. align-items -->
+  <section class="card" id="align-items">
+    <h2>3️⃣ <code>align-items</code></h2>
+    <p class="desc"><b>교차축(cross axis)</b> 방향 정렬. 가로 방향(row)일 때는 위아래 정렬이에요.</p>
+    <span class="badge parent">부모에 적용</span>
+    <div class="chips" data-target="#s-align" data-prop="align-items">
+      <button class="chip active">stretch</button>
+      <button class="chip">flex-start</button>
+      <button class="chip">flex-end</button>
+      <button class="chip">center</button>
+      <button class="chip">baseline</button>
+    </div>
+    <div class="stage tall auto-h" id="s-align">
+      <div class="item">1</div><div class="item" style="font-size:32px">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-align"></div>
+    <p class="tip">💡 stretch는 아이템에 height가 없을 때만 늘어나요. baseline은 글자 기준선에 맞춥니다.</p>
+  </section>
+
+  <!-- 4. flex-wrap -->
+  <section class="card" id="wrap">
+    <h2>4️⃣ <code>flex-wrap</code></h2>
+    <p class="desc">아이템이 넘칠 때 <b>줄바꿈</b>을 할지 정합니다. (브라우저 창 너비를 줄여보세요)</p>
+    <span class="badge parent">부모에 적용</span>
+    <div class="chips" data-target="#s-wrap" data-prop="flex-wrap">
+      <button class="chip active">nowrap</button>
+      <button class="chip">wrap</button>
+      <button class="chip">wrap-reverse</button>
+    </div>
+    <div class="stage wrap-demo same-size" id="s-wrap" style="flex-wrap:nowrap">
+      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+      <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+      <div class="item">7</div>
+    </div>
+    <div class="code" data-for="#s-wrap"></div>
+  </section>
+
+  <!-- 5. align-content -->
+  <section class="card" id="align-content">
+    <h2>5️⃣ <code>align-content</code></h2>
+    <p class="desc"><b>여러 줄</b>일 때 줄 전체를 교차축에서 어떻게 배치할지 정합니다. (flex-wrap: wrap 필수)</p>
+    <span class="badge parent">부모에 적용</span>
+    <div class="chips" data-target="#s-content" data-prop="align-content">
+      <button class="chip active">stretch</button>
+      <button class="chip">flex-start</button>
+      <button class="chip">flex-end</button>
+      <button class="chip">center</button>
+      <button class="chip">space-between</button>
+      <button class="chip">space-around</button>
+    </div>
+    <div class="stage tall wrap-demo same-size" id="s-content" style="flex-wrap:wrap">
+      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+      <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+    </div>
+    <div class="code" data-for="#s-content"></div>
+    <p class="tip">💡 align-items는 "한 줄 안에서", align-content는 "줄들 전체"를 정렬합니다.</p>
+  </section>
+
+  <!-- 6. gap -->
+  <section class="card" id="gap">
+    <h2>6️⃣ <code>gap</code></h2>
+    <p class="desc">아이템 사이 <b>간격</b>을 지정합니다. margin 대신 쓰면 편해요.</p>
+    <span class="badge parent">부모에 적용</span>
+    <div class="slider-row">
+      <label>gap</label>
+      <input type="range" min="0" max="60" value="0" id="gap-range">
+      <output id="gap-out">0px</output>
+    </div>
+    <div class="stage wrap-demo same-size" id="s-gap" style="flex-wrap:wrap">
+      <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+      <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+    </div>
+    <div class="code" data-for="#s-gap"></div>
+    <p class="tip">💡 row-gap(세로 간격) / column-gap(가로 간격)으로 따로 줄 수도 있어요.</p>
+  </section>
+
+  <!-- 7. flex-grow -->
+  <section class="card" id="grow">
+    <h2>7️⃣ <code>flex-grow</code></h2>
+    <p class="desc">남는 공간을 <b>얼마나 가져갈지</b> 비율로 정합니다. 기본값 0.</p>
+    <span class="badge child">자식에 적용 (2번 아이템)</span>
+    <div class="slider-row">
+      <label>2번 flex-grow</label>
+      <input type="range" min="0" max="5" value="0" id="grow-range">
+      <output id="grow-out">0</output>
+    </div>
+    <div class="stage same-size" id="s-grow">
+      <div class="item">1</div><div class="item target">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-grow"></div>
+  </section>
+
+  <!-- 8. flex-shrink -->
+  <section class="card" id="shrink">
+    <h2>8️⃣ <code>flex-shrink</code></h2>
+    <p class="desc">공간이 부족할 때 <b>얼마나 줄어들지</b> 정합니다. 기본값 1, 0이면 안 줄어요.</p>
+    <span class="badge child">자식에 적용 (2번 아이템)</span>
+    <div class="slider-row">
+      <label>2번 flex-shrink</label>
+      <input type="range" min="0" max="5" value="1" id="shrink-range">
+      <output id="shrink-out">1</output>
+    </div>
+    <div class="stage same-size" id="s-shrink">
+      <div class="item" style="width:300px">1</div>
+      <div class="item target" style="width:300px">2</div>
+      <div class="item" style="width:300px">3</div>
+    </div>
+    <div class="code" data-for="#s-shrink"></div>
+    <p class="tip">💡 각 아이템 width가 300px이라 합이 부모보다 커요. 창 너비를 바꿔보세요.</p>
+  </section>
+
+  <!-- 9. flex-basis -->
+  <section class="card" id="basis">
+    <h2>9️⃣ <code>flex-basis</code></h2>
+    <p class="desc">아이템의 <b>기본 크기</b>(주축 기준)를 정합니다. row일 땐 width처럼 동작해요.</p>
+    <span class="badge child">자식에 적용 (2번 아이템)</span>
+    <div class="slider-row">
+      <label>2번 flex-basis</label>
+      <input type="range" min="0" max="400" value="64" id="basis-range">
+      <output id="basis-out">64px</output>
+    </div>
+    <div class="stage same-size" id="s-basis">
+      <div class="item">1</div><div class="item target">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-basis"></div>
+    <p class="tip">💡 단축형: <b>flex: 1 1 0</b> = grow 1, shrink 1, basis 0. 자주 쓰는 <b>flex: 1</b>과 같아요.</p>
+  </section>
+
+  <!-- 10. order -->
+  <section class="card" id="order">
+    <h2>🔟 <code>order</code></h2>
+    <p class="desc">HTML 순서를 바꾸지 않고 <b>보이는 순서</b>만 바꿉니다. 기본값 0, 작을수록 앞.</p>
+    <span class="badge child">자식에 적용 (1번 아이템)</span>
+    <div class="slider-row">
+      <label>1번 order</label>
+      <input type="range" min="-2" max="5" value="0" id="order-range">
+      <output id="order-out">0</output>
+    </div>
+    <div class="stage same-size" id="s-order">
+      <div class="item target">1</div><div class="item">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-order"></div>
+  </section>
+
+  <!-- 11. align-self -->
+  <section class="card" id="align-self">
+    <h2>1️⃣1️⃣ <code>align-self</code></h2>
+    <p class="desc">부모의 align-items를 무시하고 <b>아이템 하나만</b> 교차축 정렬을 따로 지정합니다.</p>
+    <span class="badge child">자식에 적용 (2번 아이템)</span>
+    <div class="chips" data-target="#s-self .target" data-prop="align-self">
+      <button class="chip active">auto</button>
+      <button class="chip">flex-start</button>
+      <button class="chip">flex-end</button>
+      <button class="chip">center</button>
+      <button class="chip">stretch</button>
+    </div>
+    <div class="stage tall same-size" id="s-self" style="align-items:flex-start">
+      <div class="item">1</div><div class="item target">2</div><div class="item">3</div>
+    </div>
+    <div class="code" data-for="#s-self"></div>
+    <p class="tip">💡 부모는 align-items: flex-start 상태예요. 2번만 다르게 움직이는지 보세요.</p>
+  </section>
+</main>
+
+<script>
+  // 코드 표시 영역 갱신
+  function renderCode(stageSel) {
+    const stage = document.querySelector(stageSel);
+    const box = document.querySelector('.code[data-for="' + stageSel + '"]');
+    const parentRules = ['display: flex'];
+    ['flex-direction','justify-content','align-items','flex-wrap','align-content','gap'].forEach(p => {
+      if (stage.style.getPropertyValue(p)) parentRules.push(p + ': ' + stage.style.getPropertyValue(p));
+    });
+    let html = '<span class="sel">.container</span> {\n' +
+      parentRules.map(r => { const [p, v] = r.split(': '); return '  <span class="prop">' + p + '</span>: <span class="val">' + v + '</span>;'; }).join('\n') +
+      '\n}';
+    const target = stage.querySelector('.target');
+    if (target) {
+      const rules = [];
+      ['flex-grow','flex-shrink','flex-basis','order','align-self'].forEach(p => {
+        if (target.style.getPropertyValue(p)) rules.push('  <span class="prop">' + p + '</span>: <span class="val">' + target.style.getPropertyValue(p) + '</span>;');
+      });
+      if (rules.length) html += '\n\n<span class="sel">.item:nth-child(' + (Array.from(stage.children).indexOf(target) + 1) + ')</span> {\n' + rules.join('\n') + '\n}';
+    }
+    box.innerHTML = html;
+  }
+
+  // 버튼형 (부모 속성 / align-self)
+  document.querySelectorAll('.chips').forEach(group => {
+    const stageSel = group.dataset.target.split(' ')[0];
+    const prop = group.dataset.prop;
+    const el = () => document.querySelector(group.dataset.target);
+    group.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const v = btn.textContent.trim();
+        if (v === 'auto') el().style.removeProperty(prop);
+        else el().style.setProperty(prop, v);
+        renderCode(stageSel);
+      });
+    });
+    // 초기값 적용
+    const first = group.querySelector('.chip.active').textContent.trim();
+    if (first !== 'auto') el().style.setProperty(prop, first);
+    renderCode(stageSel);
+  });
+
+  // 슬라이더형
+  function slider(id, outId, stageSel, apply, fmt) {
+    const input = document.getElementById(id);
+    const out = document.getElementById(outId);
+    const run = () => {
+      const stage = document.querySelector(stageSel);
+      apply(stage, input.value);
+      out.textContent = fmt(input.value);
+      renderCode(stageSel);
+    };
+    input.addEventListener('input', run);
+    run();
+  }
+  const px = v => v + 'px';
+  const raw = v => v;
+
+  slider('gap-range', 'gap-out', '#s-gap', (s, v) => s.style.gap = v + 'px', px);
+  slider('grow-range', 'grow-out', '#s-grow', (s, v) => s.querySelector('.target').style.flexGrow = v, raw);
+  slider('shrink-range', 'shrink-out', '#s-shrink', (s, v) => s.querySelector('.target').style.flexShrink = v, raw);
+  slider('basis-range', 'basis-out', '#s-basis', (s, v) => s.querySelector('.target').style.flexBasis = v + 'px', px);
+  slider('order-range', 'order-out', '#s-order', (s, v) => s.querySelector('.target').style.order = v, raw);
+</script>
+</body>
+</html>
