@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숲길도서관</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="bar">
+      <a href="#" class="icon-btn" aria-label="메뉴"><i class="fa-solid fa-bars icon"></i></a>
+      <a href="#" class="logo">숲길도서관</a>
+      <label class="search">
+        <i class="fa-solid fa-magnifying-glass icon"></i>
+        <input type="search" placeholder="도서명, 저자, 키워드 검색">
+      </label>
+      <a href="#" class="icon-btn" aria-label="계정"><i class="fa-solid fa-circle-user icon"></i></a>
+    </header>
+
+    <nav class="nav">
+      <a href="#" class="nav-item active"><i class="fa-solid fa-house icon"></i>홈</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-book-open icon"></i>도서 검색</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-calendar-days icon"></i>행사·강좌</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-chair icon"></i>열람실 예약</a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-bookmark icon"></i>내 서재</a>
+    </nav>
+
+    <main class="main">
+      <h1>오늘은 어떤 책을 읽어 볼까요?</h1>
+      <div class="chips">
+        <a href="#" class="chip selected">전체</a>
+        <a href="#" class="chip">소설</a>
+        <a href="#" class="chip">에세이</a>
+        <a href="#" class="chip">과학</a>
+        <a href="#" class="chip">여행</a>
+      </div>
+
+      <h2>신착 도서</h2>
+      <section class="books">
+        <a href="#" class="book"><img src="images/lib-book1.jpg" alt="달빛 정원 표지"><h3>달빛 정원</h3><p>한서윤</p></a>
+        <a href="#" class="book"><img src="images/lib-book2.jpg" alt="작은 집의 기록 표지"><h3>작은 집의 기록</h3><p>오지현</p></a>
+        <a href="#" class="book"><img src="images/lib-book3.jpg" alt="알고리즘의 시간 표지"><h3>알고리즘의 시간</h3><p>민태호</p></a>
+        <a href="#" class="book"><img src="images/lib-book4.jpg" alt="바다를 건너는 법 표지"><h3>바다를 건너는 법</h3><p>정하준</p></a>
+        <a href="#" class="book"><img src="images/lib-book5.jpg" alt="느린 아침 표지"><h3>느린 아침</h3><p>이수아</p></a>
+        <a href="#" class="book"><img src="images/lib-book6.jpg" alt="도시의 색 표지"><h3>도시의 색</h3><p>박도윤</p></a>
+      </section>
+
+      <h2>이달의 행사</h2>
+      <section class="events">
+        <article class="event main-event">
+          <img src="images/lib-room.jpg" alt="도서관 열람실">
+          <div class="event-body">
+            <span class="tag">신청 중</span>
+            <h3>작가와의 만남: 「달빛 정원」 한서윤</h3>
+            <p>11월 15일 (토) 14:00 · 2층 다목적실</p>
+            <a href="#" class="btn">신청하기</a>
+          </div>
+        </article>
+        <article class="event">
+          <span class="date">11월 8일</span>
+          <h3>어린이 그림책 읽어 주기</h3>
+          <p>10:30 · 어린이실</p>
+          <a href="#" class="link">자세히 보기</a>
+        </article>
+        <article class="event">
+          <span class="date">11월 22일</span>
+          <h3>중고 도서 나눔 장터</h3>
+          <p>11:00 · 1층 로비</p>
+          <a href="#" class="link">자세히 보기</a>
+        </article>
+      </section>
+    </main>
+
+    <aside class="info">
+      <section class="card">
+        <h2>이용 안내</h2>
+        <dl>
+          <dt>평일</dt><dd>09:00 ~ 22:00</dd>
+          <dt>주말</dt><dd>09:00 ~ 18:00</dd>
+          <dt>휴관일</dt><dd>매월 첫째 월요일</dd>
+          <dt>대출</dt><dd>1인 5권 · 14일</dd>
+          <dt>문의</dt><dd>031-000-0000</dd>
+        </dl>
+      </section>
+      <section class="card">
+        <h2>열람실 남은 자리</h2>
+        <div class="seats">
+          <div class="seat"><strong>18</strong><span>열람실 A</span></div>
+          <div class="seat"><strong>7</strong><span>열람실 B</span></div>
+          <div class="seat"><strong>3</strong><span>노트북석</span></div>
+        </div>
+      </section>
+    </aside>
+
+    <footer class="foot">
+      <div><h3>숲길도서관</h3><p>서울시 숲길구 도서관로 12</p></div>
+      <div><h3>이용 시간</h3><p>평일 09:00 ~ 22:00</p></div>
+      <div><h3>문의</h3><p>031-000-0000</p></div>
+    </footer>
+  </div>
+</body>
+</html>

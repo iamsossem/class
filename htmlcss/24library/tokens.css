@@ -1,0 +1,25 @@
+/* Material Design 3 색상·모양·그림자 토큰 (기준색 #006c4c) */
+:root {
+  --primary: #006c4c;
+  --on-primary: #ffffff;
+  --primary-container: #89f8c7;
+  --on-primary-container: #002114;
+  --secondary: #4d6357;
+  --on-secondary: #ffffff;
+  --secondary-container: #cfe9d9;
+  --on-secondary-container: #092016;
+  --surface: #f5fbf6;
+  --on-surface: #171d1a;
+  --on-surface-variant: #404943;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #eff5f0;
+  --surface-container: #e9efea;
+  --surface-container-high: #e4eae5;
+  --surface-container-highest: #dee4df;
+  --outline: #707973;
+  --outline-variant: #bfc9c2;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%);
+  --shadow-2: 0 1px 2px rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%);
+  --shadow-3: 0 4px 8px 3px rgb(0 0 0 / 15%), 0 1px 3px rgb(0 0 0 / 30%);
+  --scrim: rgb(0 0 0 / 55%);
+}
