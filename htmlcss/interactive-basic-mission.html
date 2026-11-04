@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>베이직미션 완성 화면 | 인터랙티브 웹사이트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== Material Design 토큰 ===== */
+  :root {
+    --md-primary: #1a73e8;
+    --md-on-primary: #ffffff;
+    --md-surface: #ffffff;
+    --md-bg: #f8f9fa;
+    --md-on-surface: #202124;
+    --md-on-surface-variant: #5f6368;
+    --md-outline: #dadce0;
+    --md-primary-container: #e8f0fe;
+    --elev-1: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+    --elev-3: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+    --elev-5: 0 4px 4px rgba(60,64,67,.3), 0 8px 12px 6px rgba(60,64,67,.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    background: var(--md-bg);
+    color: var(--md-on-surface);
+    line-height: 1.6;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== 상단 앱바 ===== */
+  .app-bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--md-surface);
+    box-shadow: var(--elev-1);
+  }
+  .app-bar .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 700; font-size: 20px; color: var(--md-primary); }
+  .app-bar nav a { margin-left: 24px; font-size: 14px; font-weight: 500; color: var(--md-on-surface-variant); text-decoration: none; }
+  .app-bar nav a:hover { color: var(--md-primary); }
+
+  /* ===== 미션 1. 히어로: 스플릿 텍스트 + 슬라이드 업 + 스태거 ===== */
+  .hero { padding: 96px 0 80px; background: var(--md-surface); }
+  .hero .container { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.25; font-weight: 700; }
+  .hero h1 .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUpFade .8s ease-out forwards;
+    animation-delay: calc(var(--i) * 0.05s); /* 스태거 0.05초 */
+  }
+  @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+  .hero p { margin: 24px 0 32px; color: var(--md-on-surface-variant); font-size: 18px; opacity: 0; animation: slideUpFade .8s ease-out 1s forwards; }
+  .btn {
+    display: inline-block; padding: 12px 28px; border-radius: 20px;
+    background: var(--md-primary); color: var(--md-on-primary);
+    font-weight: 500; text-decoration: none; box-shadow: var(--elev-1);
+    transition: box-shadow .3s ease-out;
+  }
+  .btn:hover { box-shadow: var(--elev-3); }
+  .hero-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 28px; box-shadow: var(--elev-3); background: var(--md-primary-container); }
+
+  /* ===== 섹션 공통 ===== */
+  section.block { padding: 88px 0; }
+  .section-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .section-desc { color: var(--md-on-surface-variant); margin-bottom: 48px; }
+
+  /* ===== 미션 3. 스크롤 리빌: 페이드 인 + 슬라이드 업 (30%, 한 번만) ===== */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease-out, transform .8s ease-out; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== 미션 2. 서비스 카드: 호버 + 틸트 + 그림자 ===== */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; perspective: 1000px; }
+  .card {
+    background: var(--md-surface); border-radius: 16px; overflow: hidden;
+    box-shadow: var(--elev-1);
+    transition: transform .3s ease-out, box-shadow .3s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .card:hover { box-shadow: var(--elev-5); }
+  .card img { width: 100%; height: 180px; object-fit: cover; display: block; background: var(--md-primary-container); }
+  .card .body { padding: 20px 24px 28px; }
+  .card h3 { font-size: 20px; margin-bottom: 8px; }
+  .card p { color: var(--md-on-surface-variant); font-size: 15px; }
+
+  /* ===== 미션 4. 숫자 통계: 카운트 업 ===== */
+  .stats { background: var(--md-primary-container); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stat { background: var(--md-surface); border-radius: 16px; padding: 40px 16px; box-shadow: var(--elev-1); }
+  .stat .num { font-size: 52px; font-weight: 700; color: var(--md-primary); }
+  .stat .label { color: var(--md-on-surface-variant); margin-top: 4px; }
+
+  /* ===== 미션 5. FAQ: 아코디언 (0.4초, 한 번에 하나) ===== */
+  .faq-item { background: var(--md-surface); border-radius: 12px; margin-bottom: 12px; box-shadow: var(--elev-1); overflow: hidden; }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
+    padding: 20px 24px; font: inherit; font-weight: 500; font-size: 17px; color: var(--md-on-surface);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-q .icon { transition: transform .4s ease; color: var(--md-primary); font-size: 22px; }
+  .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .faq-a p { padding: 0 24px 22px; color: var(--md-on-surface-variant); }
+
+  footer { text-align: center; padding: 40px 0; color: var(--md-on-surface-variant); font-size: 14px; }
+
+  /* ===== 반응형 + 접근성 ===== */
+  @media (max-width: 768px) {
+    .hero .container, .cards, .stats-grid { grid-template-columns: 1fr; }
+    .app-bar nav { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    .hero h1 .char, .hero p, .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="app-bar">
+  <div class="container">
+    <div class="logo">온배움 스튜디오</div>
+    <nav>
+      <a href="#services">서비스</a>
+      <a href="#stats">성과</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 미션 1 -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <h1 id="heroTitle">움직이는 웹으로<br>첫인상을 바꿔요</h1>
+      <p>용어 하나로 AI에게 정확하게 요청하는 인터랙티브 웹사이트 만들기</p>
+      <a class="btn" href="#services">서비스 보기</a>
+    </div>
+    <img class="hero-img" alt="노트북으로 웹사이트를 작업하는 모습"
+         src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80">
+  </div>
+</section>
+
+<!-- 미션 2 + 3 -->
+<section class="block" id="services">
+  <div class="container">
+    <h2 class="section-title reveal">서비스</h2>
+    <p class="section-desc reveal">카드에 마우스를 올려보세요. 기울어지고 그림자가 짙어져요.</p>
+    <div class="cards">
+      <article class="card reveal">
+        <img alt="웹 디자인" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80">
+        <div class="body"><h3>웹 디자인</h3><p>브랜드에 맞는 화면 구조와 스타일을 설계합니다.</p></div>
+      </article>
+      <article class="card reveal">
+        <img alt="프론트엔드 개발" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80">
+        <div class="body"><h3>프론트엔드 개발</h3><p>HTML, CSS, JS로 반응하는 화면을 구현합니다.</p></div>
+      </article>
+      <article class="card reveal">
+        <img alt="AI 자동화" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80">
+        <div class="body"><h3>AI 자동화</h3><p>반복 작업을 AI로 줄여 제작 시간을 단축합니다.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 미션 4 -->
+<section class="block stats" id="stats">
+  <div class="container">
+    <h2 class="section-title reveal">숫자로 보는 성과</h2>
+    <p class="section-desc reveal">화면에 보이면 0부터 올라갑니다.</p>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num" data-target="1200" data-suffix="명">0</div><div class="label">수강생</div></div>
+      <div class="stat reveal"><div class="num" data-target="98" data-suffix="%">0</div><div class="label">만족도</div></div>
+      <div class="stat reveal"><div class="num" data-target="15" data-suffix="년">0</div><div class="label">교육 경력</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 미션 5 -->
+<section class="block" id="faq">
+  <div class="container">
+    <h2 class="section-title reveal">자주 묻는 질문</h2>
+    <p class="section-desc reveal">질문을 누르면 답변이 열리고, 한 번에 하나만 열려요.</p>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">코딩을 몰라도 수강할 수 있나요? <span class="icon">+</span></button>
+        <div class="faq-a"><p>네, 용어와 프롬프트 공식만 익히면 AI와 함께 결과물을 만들 수 있어요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">어떤 도구를 사용하나요? <span class="icon">+</span></button>
+        <div class="faq-a"><p>AI 코딩 도구와 브라우저만 있으면 시작할 수 있어요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">결과물은 포트폴리오로 쓸 수 있나요? <span class="icon">+</span></button>
+        <div class="faq-a"><p>완성한 페이지를 캡처하고 사용한 프롬프트와 함께 정리하면 좋은 포트폴리오가 돼요.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 온배움 스튜디오 · 베이직미션 완성 화면</footer>
+
+<script>
+  /* 미션 1. 스플릿 텍스트: 제목을 글자 단위로 쪼개고 인덱스(--i)로 스태거 */
+  (function splitText() {
+    const title = document.getElementById('heroTitle');
+    let i = 0;
+    const html = title.innerHTML.split('<br>').map(line =>
+      [...line].map(ch => ch === ' ' ? ' ' : `<span class="char" style="--i:${i++}">${ch}</span>`).join('')
+    ).join('<br>');
+    title.innerHTML = html;
+  })();
+
+  /* 미션 2. 틸트 효과: 마우스 위치에 따라 최대 8도 기울기 */
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  /* 미션 3. 스크롤 리빌: 30% 보이면 한 번만 실행 */
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target); // 한 번만
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* 미션 4. 카운트 업: 2초, ease-out */
+  function countUp(el) {
+    const target = +el.dataset.target, suffix = el.dataset.suffix || '', duration = 2000;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3); // ease-out
+      el.textContent = Math.round(target * eased).toLocaleString() + (t === 1 ? suffix : '');
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { countUp(entry.target); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.num').forEach(el => countObserver.observe(el));
+
+  /* 미션 5. 아코디언: 0.4초, 한 번에 하나만 열림 */
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        const a = item.querySelector('.faq-a');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* 이미지 로드 실패 시 대체 배경 유지 */
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => { img.style.visibility = 'hidden'; });
+  });
+</script>
+</body>
+</html>
